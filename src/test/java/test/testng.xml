@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "CalcTest">
+    <!--
+    <test name = "exampletest1">
+        <classes>
+            <class name = "Test1" />
+        </classes>
+    </test>
+
+    <test name = "exampletest2">
+        <classes>
+            <class name = "Test2" />
+        </classes>
+    </test>
+    -->
+
+    <test name="test suite" parallel="tests" thread-count="4">
+        <parameter name="a" value="2"/>
+        <parameter name="b" value="2"/>
+        <parameter name="ex" value="0"/>
+        <groups>
+            <define name="all">
+                <include name="test-add"/>
+                <include name="test-sub"/>
+                <include name="test-mult"/>
+                <include name="test-div"/>
+            </define>
+            <define name="div">
+                <include name="test-div"/>
+            </define>
+            <run>
+                <!--<include name="all"/>-->
+                <include name="div"/>
+                <!--<exclude name="div"/>-->
+            </run>
+        </groups>
+        <packages>
+            <package name="test"/>
+        </packages>
+    </test>
+
+</suite>
